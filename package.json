@@ -1,0 +1,22 @@
+{
+  "name": "desktop-tutorial",
+  "version": "1.0.0",
+  "description": "In the project directory, you can run:",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thuankxk2701/Algorithms-Data-Structures-Masterclass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thuankxk2701/Algorithms-Data-Structures-Masterclass/issues"
+  },
+  "homepage": "https://github.com/thuankxk2701/Algorithms-Data-Structures-Masterclass#readme",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
