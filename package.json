@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thuankxk2701/Algorithms-Data-Structures-Masterclass#readme",
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "lite-server": "^2.6.1"
   }
 }
