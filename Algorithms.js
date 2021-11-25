@@ -291,7 +291,7 @@ function bubbleSort(arr){
 }
 console.log(bubbleSort([21,23,41,53,123,41,2,12,42,54]));
 
-
+//insertionSort
 
 function insertionSort(arr){
   for( let i=1; i<arr.length; i++)
@@ -309,7 +309,7 @@ function insertionSort(arr){
 
 console.log(insertionSort([21,23,41,53,123,41,2,12,42,54]));
 
-
+// mergeSort
 function merge(arr1, arr2) {
   let result = [];
   let i = 0;
@@ -347,4 +347,65 @@ function mergeSort(arr) {
 console.log(mergeSort([21, 23, 41, 53, 123, 41, 2, 12, 42]));
 
 
+// quickSort
+function pivot(arr, start = 0, end = arr.length - 1) {
+  let pivot = arr[start];
+  let swapIdx = start;
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
+  for (let i = start + 1; i <= end; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++;
+      swap(arr, swapIdx, i);
+    }
+  }
+  swap(arr, start, swapIdx);
+  return swapIdx;
+}
+
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left < right) {
+    let pivotIndex = pivot(arr, left, right);
+    quickSort(arr, left, pivotIndex - 1);
+    quickSort(arr, pivotIndex + 1, right);
+  }
+  return arr;
+}
+
+quickSort([4, 6, 9, 1, 2, 5, 3]);
+
+
+/// ** Radix SORT
+
+function  getDigit(num,i){
+  return Math.floor(Math.abs(num)/Math.pow(10,i))%10;
+}
+function digitCount(num){
+  if(num===0) return 1;
+  return Math.floor(Math.log10(Math.abs(num)))+1
+}
+
+function mostDigits(nums,maxDigits=0){
+   if(nums.length===1) return digitCount(nums[nums.length-1]);
+    maxDigits=(mostDigits(nums.slice(0,-1)));
+   maxDigits=Math.max(maxDigits,digitCount(nums[nums.length-1]));
+   return maxDigits    
+}
+
+
+function radixSort(nums){
+  let maxDigitsCount=mostDigits(nums);
+  for(let k =0 ; k<maxDigitsCount; k++){
+    let digitBuckets=Array.from({length:10},()=>[]);
+    for(let i =0; i<nums.length; i++){
+      const digit=getDigit(nums[i],k)
+      digitBuckets[digit].push(nums[i])
+    }  
+     nums=[].concat(...digitBuckets)
+  
+  }
+  return nums
+}
+console.log(radixSort([1,2,3,3123,231,14234]));
 */
