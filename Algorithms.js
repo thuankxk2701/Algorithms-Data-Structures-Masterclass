@@ -121,17 +121,195 @@ for(let value of arr ){
 }
 return result;
 }
+
 function capitalizeFirst (array) {
   if (array.length === 1) {
     return [array[0][0].toUpperCase() + array[0].substr(1)];
   }
   const res = capitalizeFirst(array.slice(0, -1));
   const string = array.slice(array.length - 1)[0][0].toUpperCase() + array.slice(array.length-1)[0].substr(1);
-  console.log(res);
   res.push(string);
   return res;
 }
 console.log(capitalizeFirst(['car','taco','banana']));
+
+
+var obj1 = {
+  outer: 2,
+  obj: {
+    inner: 2,
+    otherObj: {
+      superInner: 2,
+      notANumber: true,
+      alsoNotANumber: "yup",
+    },
+  },
+};
+
+function nestedEvenSum(obj, sum = 0) {
+  for (var key in obj) {
+    if (typeof obj[key] === "object") {
+      sum += nestedEvenSum(obj[key]);
+    } else if (typeof obj[key] === "number" && obj[key] % 2 === 0) {
+      sum += obj[key];
+    }
+  }
+  return sum;
+}
+console.log(nestedEvenSum(obj1)); 
+
+
+function capitalizeWords (array) {
+  
+  if(array.length===1) return [array[0].toUpperCase()];
+
+   const res=capitalizeWords(array.slice(0,-1));
+  const string=array[array.length-1].toUpperCase()
+  res.push(string);
+  return res;
+}
+
+console.log(capitalizeWords(['a','b','c']));
+
+let obj = {
+  num: 1,
+  test: [],
+  data: {
+      val: 4,
+      info: {
+          isRight: true,
+          random: 66
+      }
+  }
+}
+
+function stringifyNumbers(obj,newObj={}){
+  for (let key in obj) {
+    if (typeof obj[key] === 'number') {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+  return newObj;
+}
+
+
+console.log(stringifyNumbers(obj));
+
+
+const obj = {
+  stuff: "foo",
+  data: {
+      val: {
+          thing: {
+              info: "bar",
+              moreInfo: {
+                  evenMoreInfo: {
+                      weMadeIt: "baz"
+                  }
+              }
+          }
+      }
+  }
+}
+
+
+function collectStrings(obj,newArr=[]){
+   for (let key in obj){
+     if(typeof obj[key]==='string'){
+       newArr.push(obj[key])
+     } else
+     if(typeof obj[key]==='object' && !Array.isArray(obj[key])){
+      newArr.push(...collectStrings(obj[key]))
+     } else{
+       newArr.push(obj[key])
+     }
+   }
+   return newArr;
+  
+}
+function collectStrings(obj) {
+  var stringsArr = [];
+  for(var key in obj) {
+      if(typeof obj[key] === 'string') {
+          stringsArr.push(obj[key]);
+      }
+      else if(typeof obj[key] === 'object') {
+          stringsArr = stringsArr.concat(collectStrings(obj[key]));
+      }
+  }
+
+  return stringsArr;
+}
+
+console.log(collectStrings(obj));
+
+
+
+function linearSearch(arr,value){
+  // c1
+  for(let i=0; i< arr.length; i++)if(arr[i]===value) return i;
+  return -1
+  //c2
+   return arr.indexOf(value)
+
+  }
+console.log(linearSearch([10,15,20,25,30],15));
+
+
+function binarySearch(arr,value){
+ let start=0;
+ let end=arr.length-1;
+ let mid=0;
+ while(start<end){
+   mid=Math.floor((start+end)/2);
+   if(arr[mid]===value) return mid;
+   else if(arr[mid]<value) start+=1;else end-=1;
+ }
+ return -1
+}
+console.log(binarySearch([1,2,3,4,5],10));
+
+function bubbleSort(arr){
+  let noSwap;
+  for(let i=arr.length-1; i>0; i--){
+    noSwap=true;
+    for(let j=0; j<i-1; j++){
+      if(arr[j]>arr[j+1]){
+        let temp=arr[j];
+        arr[j]=arr[j+1];
+        arr[j+1]=temp;
+        noSwap=false;
+      }
+    }
+    if(noSwap) break;
+  }
+  return arr
+}
+console.log(bubbleSort([21,23,41,53,123,41,2,12,42,54]));
+
+
+
+function insertionSort(arr){
+  for( let i=1; i<arr.length; i++)
+  {
+    let currentVal=arr[i];
+    for( var j=i-1; j>=0 && arr[j]>currentVal; j--){
+      arr[j+1]=arr[j]
+    
+    }
+
+    arr[j+1]=currentVal
+  }
+  return arr
+}
+
+console.log(insertionSort([21,23,41,53,123,41,2,12,42,54]));
+
+
 
 */
 
