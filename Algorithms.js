@@ -409,3 +409,41 @@ function radixSort(nums){
 }
 console.log(radixSort([1,2,3,3123,231,14234]));
 */
+
+// class Student {
+//   #firstName;
+//   constructor(firstName, lastName, year) {
+//     this.#firstName = firstName;
+//     this.lastName = lastName;
+//     this.year = year;
+//     this.#totalName();
+//   }
+//   #totalName() {
+//     return `hello ${this.firstName} ${this.lastName} years : ${this.year}`;
+//   }
+//   static data() {
+//     console.log(1234);
+//   }
+// }
+// const data = new Student("Thuan", "nguyen", 18);
+
+// data.data();
+
+class ClassWithStaticMethod {
+  constructor(first,last){
+    this.first=first;
+    this.last=last;
+  }
+  static staticProperty = 'someValue';
+  static staticMethod() {
+    return 'static method has been called.';
+  }
+  static {
+    console.log('Class static initialization block called');
+  }
+}
+
+// console.log(ClassWithStaticMethod.staticProperty);
+// // output: "someValue"
+// console.log(ClassWithStaticMethod.staticMethod());
+// // output: "static method has been called."
